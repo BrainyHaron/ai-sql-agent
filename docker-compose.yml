@@ -1,0 +1,62 @@
+services:
+  # 1. Сервис базы данных PostgreSQL
+  db:
+    image: postgres:15-alpine
+    container_name: ai_sql_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      # Автоматически выполняем init.sql при первом запуске
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      # Именованный volume для данных PostgreSQL
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # 2. Сервис локальной нейросети Ollama
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ai_sql_ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    command: serve
+
+  # 3. Одноразовый контейнер для скачивания модели
+  ollama-setup:
+    image: ollama/ollama:latest
+    depends_on:
+      - ollama
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    volumes:
+      - ollama_data:/root/.ollama
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["sleep 10 && ollama pull qwen2.5-coder:7b"]
+
+  # 4. Сервис нашего Python-приложения
+  app:
+    build: .
+    container_name: ai_sql_app
+    ports:
+      - "8501:8501"
+    depends_on:
+      db:
+        condition: service_healthy
+      ollama-setup:
+        condition: service_completed_successfully
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+
+# Объявляем volumes для постоянного хранения данных
+volumes:
+  postgres_data:
+  ollama_data:

@@ -1,0 +1,15 @@
+# Основной фреймворк для создания веб-интерфейса на Python
+streamlit==1.32.0
+
+# Обновленные версии LangChain для совместимости с Ollama
+langchain==0.2.16
+langchain-community==0.2.16
+
+# Интеграция LangChain с локальной нейросетью Ollama
+langchain-ollama==0.1.1
+
+# Драйвер для подключения Python к базе данных PostgreSQL
+psycopg2-binary==2.9.9
+
+# Библиотека для загрузки переменных окружения из файла .env
+python-dotenv==1.0.1
