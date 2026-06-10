@@ -73,7 +73,7 @@ AI SQL Аналитик для PostgreSQL
              [http://localhost:8501](http://localhost:8501)
 
 
-
+(https://raw.githubusercontent.com/BrainyHaron/ai-sql-agent/main/architecture.png)
 
 
 Компоненты
