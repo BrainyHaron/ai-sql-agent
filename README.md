@@ -26,6 +26,8 @@ AI SQL Аналитик для PostgreSQL
 
 Проект построен на базе Docker Compose и состоит из **4 контейнеров**:
 
+Схематическое представление архитектуры:
+
 ┌─────────────────────────────────────────────────────────────┐
 
 │                    Docker Compose Network                    │
@@ -72,7 +74,7 @@ AI SQL Аналитик для PostgreSQL
 
              [http://localhost:8501](http://localhost:8501)
 
-
+Визуальное представление архитектуры:
 (https://raw.githubusercontent.com/BrainyHaron/ai-sql-agent/main/architecture.png)
 
 
