@@ -223,7 +223,7 @@ AI SQL Аналитик для PostgreSQL
 
    ```bash
 
-   git clone <[URL_РЕПОЗИТОРИЯ](https://github.com/BrainyHaron/ai-sql-agent)>
+   git clone <(https://github.com/BrainyHaron/ai-sql-agent)>
 
    cd ai-sql-agent
 
