@@ -72,7 +72,7 @@ AI SQL Аналитик для PostgreSQL
 
                               ▼
 
-             [http://localhost:8501](http://localhost:8501)
+             [http://localhost:8501]
 
 Визуальное представление архитектуры:
 (https://raw.githubusercontent.com/BrainyHaron/ai-sql-agent/main/architecture.png)
@@ -207,7 +207,7 @@ AI SQL Аналитик для PostgreSQL
 
 Предварительные требования
 
-- **Docker Desktop** версии 20.10 или выше ([скачать]([https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)))
+- **Docker Desktop** версии 20.10 или выше (([https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)))
 
 - Минимум **8 ГБ свободной RAM** (для работы модели Qwen 2.5 Coder 7B)
 
